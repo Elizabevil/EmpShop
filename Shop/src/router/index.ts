@@ -5,7 +5,7 @@ import {Token} from "../utils/Constant";
 
 const indexChildren = [{
     path: "about",
-    component: () => import('../pages/About.vue'),
+    component: () => import('../pages/IndexPage.vue'),
 }]
 
 const routes = [{
@@ -29,7 +29,7 @@ const routes = [{
         isShow: true,
         noCache: true // 不会被 <keep-alive> 缓存
     },
-    component: () => import('../pages/IndexPage.vue'),
+    component: () => import('../pages/IndexPagess.vue'),
     children: [...indexChildren]
 },
 

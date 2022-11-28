@@ -2,11 +2,11 @@
   list-style-type: none
   margin: 0
   padding: 0
-  border: 1px solid #555
   width: auto
-  height: 30%
+  height: auto
   position: fixed
   background-color: #333
+  font-size: 24px
 
 .vertical_ul li
   text-align: center
@@ -23,3 +23,35 @@
 
 .vertical_ul li a:hover:not(.active)
   background-color: #706f6f
+
+.horizon_ul
+  border: 1px solid #4b4b4b
+  //固定在顶部
+  top: 0
+  width: 100%
+  list-style-type: none
+  margin: 0
+  padding: 0
+  overflow: hidden
+  background-color: #333
+  display: flex
+  align-items: center
+
+.horizon_ul li
+  float: left
+
+.horizon_ul li a
+  display: block
+  color: #c0c0c0
+  text-align: center
+  padding: 14px 16px
+  text-decoration: none
+
+.horizon_ul li a:hover
+  background-color: #66dce3
+
+.horizon_ul li a.active
+  background-color: #4CAF50
+
+.horizon_ul li a.hover:not(.active)
+  background-color: #ec6f6f
