@@ -65,6 +65,12 @@ div.nature li a.active
 
 
 div.inline ul
+  //position: sticky 粘性导航栏
+  border: 1px solid #e7e7e7
+  position: fixed
+  //固定在顶部
+  top: 0
+  width: 100%
   list-style-type: none
   margin: 0
   padding: 0
@@ -73,10 +79,16 @@ div.inline ul
 
 div.inline li
   float: left
+  border-right: 1px solid #bbb
+//白色分割符
+div.inline li:last-child
+  border-right: none
+//最后一个除外
+
 
 div.inline li a
   display: block
-  color: white
+  color: #666
   text-align: center
   padding: 14px 16px
   text-decoration: none
