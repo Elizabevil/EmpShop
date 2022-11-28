@@ -36,4 +36,5 @@ base_dir=$(
 npm install -g npm-check-updates #ncu 更新依賴
 ncu -u && npm install
 npm install -g npm@9.1.2
+npm i
 
