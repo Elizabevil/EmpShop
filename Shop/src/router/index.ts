@@ -38,7 +38,7 @@ const routes = [{
         isShow: true,
         noCache: true // 不会被 <keep-alive> 缓存
     },
-    component: () => import('../components/GoodCard.vue'),
+    component: () => import('../components/goods/GoodCard.vue'),
     children: [...indexChildren]
 },
 
