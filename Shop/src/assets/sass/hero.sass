@@ -1,0 +1,82 @@
+.hero_capsule img.hero_capsule_img
+  display: block
+  max-width: 100%
+  transition: opacity 0.5s
+
+.hero_discount
+  position: absolute
+  right: 0
+  bottom: 5%
+  transition: bottom 0.6s
+
+.hero_click_overlay
+  position: absolute
+  display: block
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  z-index: 1
+
+.hero_capsule
+  width: 31%
+  max-width: 340px
+  position: relative
+  overflow: hidden
+  font-size: 12px
+  margin-left: 2.5%
+  margin-bottom: 12px
+
+.hero_capsule .hover_screenshots
+  position: absolute
+  margin: 0
+  top: 100%
+  right: 0
+  width: 100%
+  height: 46.5%
+  opacity: 0
+  pointer-events: none
+  background: #000000
+  transition: top 0.6s, opacity 0.5s
+
+
+.discount_pct
+  display: flex
+  flex-direction: column
+  justify-content: center
+  background-color: #03e9f4
+
+.discount_block
+  padding: 1px
+  display: flex
+  align-items: center
+  flex-wrap: nowrap
+  flex-direction: row
+  float: right
+  width: auto
+  max-width: 100px
+  z-index: 2
+
+.discount_prices
+  display: flex
+  background: #344654
+  justify-content: center
+  height: auto
+
+.discount_original_price
+  position: relative
+  width: fit-content
+  color: #727272
+  text-decoration: line-through
+
+.discount_final_price
+  padding-left: 4px
+  color: #418cfd
+
+.hero_add_to_cart
+  position: absolute
+  z-index: 2
+  left: 0
+  bottom: 7%
+  transition: top 0.5s
+  padding: 8px 0 0 9%

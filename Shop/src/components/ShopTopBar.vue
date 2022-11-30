@@ -4,10 +4,10 @@
 </script>
 
 <template lang="pug">
+
 ul.horizon_ul
   li
     a.shieldLogo
-
   li
     a FAQ
   li
@@ -16,6 +16,9 @@ ul.horizon_ul
     a HELP
   li
     a Unreal
+  li
+    a News
+
 </template>
 
 

@@ -104,7 +104,7 @@ div.inline li a:hover:not(.active)
 
 div
   //background: #1a1a1a
-  background-image: url("src/assets/qiyuan.jpg")
+  background-image: url("../../public/img/qiyuan.jpg")
   background-repeat: no-repeat
   background-position: right top
   background-attachment: fixed

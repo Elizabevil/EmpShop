@@ -14,7 +14,6 @@ const routes = [{
 }, {
     path: "/login",
     name: "login",
-
     meta: {
         title: "登录",
         isShow: true,
@@ -29,7 +28,17 @@ const routes = [{
         isShow: true,
         noCache: true // 不会被 <keep-alive> 缓存
     },
-    component: () => import('../pages/IndexPagess.vue'),
+    component: () => import('../pages/IndexPage.vue'),
+    children: [...indexChildren]
+}, {
+    path: "/goods",
+    name: "goods",
+    meta: {
+        title: "goods",
+        isShow: true,
+        noCache: true // 不会被 <keep-alive> 缓存
+    },
+    component: () => import('../components/GoodCard.vue'),
     children: [...indexChildren]
 },
 
@@ -40,33 +49,31 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes: routes
 })
-router.beforeEach((to, from, next) => {
-        const token = localStorage.getItem(Token)
-        console.log("isToken!!!!!!!!::" + token)
-        // 有token就只允许到登录页面
-        if (token != null && token !== '') {
-            if (to.path === '/login') {//带有token访问登录页面自动跳转至主页
-                next()
-            } else {
-                // 带有token访问其他页面允许跳转
-                next()
-            }
-        } else {//没有token
-            if (to.path === '/login') {
-                next()
-            } else {
-                // 没有token访问其他页面跳转至登录页面
-                next({
-                    path: '/login',
-                    query: {redirect: to.fullPath}
-                })
-            }
-        }
-    }
-)
-//全局后置路由守卫————初始化的时候被调用、每次路由切换之后被调用
-router.afterEach((to, from) => {
-})
+// router.beforeEach((to, from, next) => {
+//         const token = localStorage.getItem(Token)
+//         console.log("isToken!!!!!!!!::" + token)
+//         // 有token就只允许到登录页面
+//         if (token != null && token !== '') {
+//             if (to.path === '/login') {//带有token访问登录页面自动跳转至主页
+//                 next()
+//             } else {
+//                 // 带有token访问其他页面允许跳转
+//                 next()
+//             }
+//         } else {//没有token
+//             if (to.path === '/login') {
+//                 next()
+//             } else {
+//                 // 没有token访问其他页面跳转至登录页面
+//                 next({
+//                     path: '/login',
+//                     query: {redirect: to.fullPath}
+//                 })
+//             }
+//         }
+//     }
+// )
+//
 
 export const RouteTable = routes
 export default router

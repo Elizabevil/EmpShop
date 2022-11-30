@@ -2,8 +2,7 @@
   import IndexPage from "./pages/IndexPage.vue";</script>
 
 <template>
-
-<IndexPage />
+<router-view></router-view>
 </template>
 
 <style lang="sass">

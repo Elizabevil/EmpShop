@@ -33,9 +33,7 @@ div.root_container
 $font-stack: Helvetica, sans-serif
 $primary-color: #333
 
-.root_container
 
-ul
 
 video
   width: 960px
