@@ -23,7 +23,7 @@ const routes = [{
         isShow: true,
         noCache: true // 不会被 <keep-alive> 缓存
     },
-    component: () => import('../pages/Login.vue')
+    component: () => import('../pages/Login2.vue')
 }, {
     path: "/index",
     name: "index",
