@@ -2,7 +2,7 @@ source /etc/profile
 go env -w GOPROXY=http://192.168.20.10:8081/repository/go-group/
 go env -w GO111MODULE=on
 npm config set registry http://192.168.20.10:8081/repository/node-group/ #使用淘宝源 registry，下载更快
-sudo apt-get install protoc-gen-go
+sudo apt-get install protoc-gen-go -y
 
 base_dir=$(
   cd "$(dirname "$0")"
@@ -31,10 +31,11 @@ base_dir=$(
 #go build -a -installsuffix cgo -o Pro
 
 
-#cd vitePage
+cd Shop
 
 npm install -g npm-check-updates #ncu 更新依賴
 ncu -u && npm install
-npm install -g npm@9.1.2
+#npm install -g npm@9.1.2
 npm i
+npm -v
 
