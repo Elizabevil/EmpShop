@@ -7,6 +7,10 @@ const indexChildren = [{
     path: "about",
     component: () => import('../pages/IndexPage.vue'),
 }]
+const goodsChildren = [{
+    path: "details",
+    component: () => import('../components/goods/GoodDetails.vue'),
+}]
 
 const routes = [{
     path: "/",
@@ -38,8 +42,8 @@ const routes = [{
         isShow: true,
         noCache: true // 不会被 <keep-alive> 缓存
     },
-    component: () => import('../components/goods/GoodCard.vue'),
-    children: [...indexChildren]
+    component: () => import('../components/goods/GoodDetails.vue'),
+    children: [...goodsChildren]
 },
 
 ]
