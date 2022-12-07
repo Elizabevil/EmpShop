@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import {inject, ref} from "vue";
-  import {debounce} from "../utils/tools/FunHandle";
+  import {inject, ref} from "vue"
+  import {debounce} from "../utils/tools/FunHandle"
 
   const searchValue = ref("")
   let searchClick = inject('searchValueClick')
@@ -22,10 +22,9 @@ div.search-box
   position: absolute
   top: 10%
   right: 5%
-  transform: translate(-10%, -50%)
   background: #2f3640
   height: 40px
-  border-radius: 100%
+  border-radius: 50px
   padding: 10px
   display: flex
   justify-content: center
@@ -33,10 +32,10 @@ div.search-box
 
 .search-box:hover > .search-txt
   width: 200px
-  padding: 0 6px
+  padding: 0 10px
 
 .search-box:hover > .search-btn
-  background: white
+  background: #f1f1f1
 
 .search-btn
   float: right
