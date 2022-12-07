@@ -20,7 +20,7 @@ const searchClick = (msg: string) => {
   console.log(msg)
 }
 
-const menus = ["help", "ABOUT"]
+const menus = ["help", "community", "news", "ABOUT"]
 
 provide('searchValueClick', searchClick) //给自己的后代组件传递数据 /消息订阅/全局事件总线
 

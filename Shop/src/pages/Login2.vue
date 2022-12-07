@@ -1,7 +1,5 @@
 <template lang="pug">
 .box
-  SliceNotification
-
   .login_background
   div.Login_Title Sign In
   form.Login_form
@@ -24,6 +22,7 @@
 import {ref} from "vue"
 import {Instance} from "../utils/AxiosUtils"
 import SliceNotification from "../components/notification/SliceNotification.vue";
+import {LogError, LogSuccess} from "../utils/notification/Index";
 
 const form_blank = [{
   msg: "Email", vmode: ref("").value
@@ -39,8 +38,11 @@ const SignIn = () => {
   console.log(userInfo)
   Instance.get("/login", {}).then(resp => {
     console.log(resp.data)
+    LogSuccess("Login In Success")
+
   }, error => {
     console.log(error)
+    LogError("Login In Error")
   })
 }
 
