@@ -1,30 +1,51 @@
 <template lang="pug">
 .box
   .login_background
-
   div.Login_Title Sign In
   div.Login_form
     div
       ul
-        li
-          .form_title Email
-          input
-        li
-          .form_title Password
-          input
+        li(v-for="(item,index) in form_blank" :key="index" )
+          .form_title {{item.msg}}
+          input(v-model="item.vmode")
+
     div.remember_me
       input(type="checkbox")
       div  Remember me
-    button Sign In
+    button.loginButton(@click="SignIn") Sign In
 </template>
 
 <script lang="ts" setup>
+
+import {ref} from "vue";
+import {Instance} from "../utils/AxiosUtils";
+
+const form_blank = [{
+  msg: "Email", vmode: ref("").value
+}, {
+  msg: "Password", vmode: ref("").value
+},
+]
+
+const SignIn = () => {
+  const userInfo = {
+    username: form_blank[0].vmode,
+    password: form_blank[1].vmode
+  }
+  console.log(userInfo)
+  Instance.get("/login", {}).then(resp => {
+    console.log(resp.data)
+  })
+}
 
 </script>
 
 <style scoped lang="sass">
 @import "src/assets/sass/base"
 @import "src/assets/sass/checkBox"
+@import "src/assets/sass/LoginButtun"
+
+
 .box
   width: 100vw
   height: 100vh
@@ -38,17 +59,6 @@
   justify-content: center
 
 
-.login_background
-  position: absolute
-  width: 100%
-  height: 100%
-  background: url("src/assets/login_back.jpg") no-repeat 100% 100%
-  -webkit-background-size: cover
-  -moz-background-size: cover
-  -o-background-size: cover
-  background-size: cover
-  z-index: -1
-
 .Login_Title
   color: #ffffff
   font-size: 32px
@@ -58,10 +68,10 @@
   font-weight: 200
 
 .Login_form
-  padding: 20px
+  padding: 10px
   position: relative
   background: #000000
-  border: 1px solid #000
+  border: 1px solid #6e6e6e
   border-radius: 5%
   display: flex
   flex-direction: column
@@ -80,11 +90,12 @@ ul li
   margin-top: calc($font_size / 2)
 
   input
-    margin-top: calc($font_size / 2)
+    min-width: 250px
+    margin-top: calc($font_size / 5)
     border-radius: 5px
     padding: calc($font_size / 2)
     box-sizing: border-box
-    font-size: $font_size
+    font-size: calc($font_size / 2)
     font-weight: 400
     background: rgb(208, 208, 208)
 
@@ -102,21 +113,5 @@ ul li
   div
     margin-left: 5px
 
-
-button
-  position: relative
-  background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%)
-  border-radius: 2px
-  border: none
-  outline: none
-  padding: 8px
-  color: #fff
-  font-size: 18px
-  font-weight: 500
-  font-family: inherit
-  text-align: center
-  letter-spacing: .03em
-  cursor: pointer
-  min-width: 200px
 
 </style>
