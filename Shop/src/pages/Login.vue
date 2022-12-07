@@ -1,46 +1,83 @@
 <template lang="pug">
-.box
-  .content
-    .login-wrapper
-      h1 登录
-      .login-form
-        .username.form-item
-          span 使用邮箱或者手机号
-          input.input-item(type='text')
-        .password.form-item
-          span 密码
-          input.input-item(type='password')
-        button.login-btn Sign In
+.login_background
+
+.login_box(v-show="isLoginPage" )
+  div.Login_Title Sign In
+  form.Login_form
+    div
+      ul
+        li(v-for="(item,index) in login_blank" :key="index" )
+          .form_title {{item.msg}}
+          input(v-model="item.vmode.value" :type="item.type"
+            :placeholder="item.placeholder" required=true
+            minlength="3" maxlength="64")
+
+    div.remember_me
+      input(type="checkbox")
+      div  Remember me
+    button.loginButton(@click.prevent="SignIn") Sign In
+
+.login_box(v-show="!isLoginPage" )
+  div.Login_Title Join Us
+  form.register_form
+    div
+      ul
+        li(v-for="(item,index) in regist_blank" :key="index" )
+          .form_title {{item.msg}}
+          input(v-model="item.vmode.value" :type="item.type" required)
 
 
-      .divider
-        span.line
-        span.divider-text 其他方式登录
-        span.line
-      .other-login-wrapper
-        .other-login-item
-          img(src='https://ts1.cn.mm.bing.net/th/id/R-C.71deac23c198b7f63fb61e7293ad76d8?rik=saBFfTEGfQU0Qw&riu=http%3a%2f%2fpic.ntimg.cn%2f2008-01-13%2f200811392350693_2.jpg&ehk=AxveDFI5kdtBqy%2f%2fB0okvMHFwxF2bwI6xoGmlXyesyo%3d&risl=&pid=ImgRaw&r=0', alt)
-        .other-login-item
-          img(src='./asset/WeChat.png', alt)
+    div.remember_me
+    button.loginButton(@click.prevent="SignIn") Sign Up
+div.changeToRegister(@click="changePage") To Change
 </template>
 
 <script lang="ts" setup>
-  import {reactive, ref, watch} from "vue"
-  import {useRouter} from "vue-router"
-  import IndexPage from "../App.vue"
 
-  const username = ref("")
-  const password = ref("")
-  const loginData = reactive([
-    {"msg": "email", type: "text", "vmode": username},
-    {"msg": "password", type: "password", "vmode": password},
-  ])
-  const submit = () => {
-    console.log(username.value)
-    console.log(password.value)
+import {ref} from "vue"
+import {Instance} from "../utils/AxiosUtils"
+import {LogError, LogSuccess} from "../utils/notification/Index";
+
+let isLoginPage = ref(true)
+const email_ref = ref("")
+const password_ref = ref("")
+const rePassword_ref = ref("")
+const login_blank = [
+  {msg: "Email", vmode: email_ref, type: "email", placeholder: "example@example.com"},
+  {msg: "Password", vmode: password_ref.value, type: "password", placeholder: "your password"},
+]
+const regist_blank = [
+  {msg: "Email", vmode: email_ref, type: "email"},
+  {msg: "Password", vmode: password_ref.value, type: "password"},
+  {msg: "RePassword", vmode: rePassword_ref.value, type: "password"},
+]
+
+const RePassword = ref("")
+
+const SignIn = () => {
+  const userInfo = {
+    username: login_blank[0].vmode,
+    password: login_blank[1].vmode
   }
+  console.log(userInfo)
+  Instance.get("/login", {}).then(resp => {
+    console.log(resp.data)
+    LogSuccess("Login In Success")
+
+  }, error => {
+    console.log(error)
+    LogError("Login In Error")
+  })
+}
+
+const changePage = () => {
+  isLoginPage.value = !isLoginPage.value
+}
 </script>
 
 <style scoped lang="sass">
 @import "src/assets/sass/login"
+@import "src/assets/sass/LoginButtun"
+@import "src/assets/sass/regist"
+
 </style>
