@@ -24,54 +24,77 @@
       ul
         li(v-for="(item,index) in regist_blank" :key="index" )
           .form_title {{item.msg}}
-          input(v-model="item.vmode.value" :type="item.type" required)
-
+          input(v-model="item.vmode.value" :type="item.type"
+            :placeholder="item.placeholder" required=true
+            minlength="3" maxlength="64")
 
     div.remember_me
-    button.loginButton(@click.prevent="SignIn") Sign Up
+    button.loginButton(@click.prevent="SignUp") Sign Up
 div.changeToRegister(@click="changePage") To Change
+  div {{login_blank}}
 </template>
 
 <script lang="ts" setup>
 
-import {ref} from "vue"
-import {Instance} from "../utils/AxiosUtils"
+import {ref, watchEffect} from "vue"
 import {LogError, LogSuccess} from "../utils/notification/Index";
 
 let isLoginPage = ref(true)
-const email_ref = ref("")
-const password_ref = ref("")
-const rePassword_ref = ref("")
-const login_blank = [
-  {msg: "Email", vmode: email_ref, type: "email", placeholder: "example@example.com"},
-  {msg: "Password", vmode: password_ref.value, type: "password", placeholder: "your password"},
+const ref_email = ref("")
+const ref_password = ref("")
+const ref_rePassword = ref("")
+
+let login_blank = [
+  {msg: "Email", vmode: ref_email, type: "email", placeholder: "example@example.com"},
+  {msg: "Password", vmode: ref_password, type: "password", placeholder: "your password"},
 ]
-const regist_blank = [
-  {msg: "Email", vmode: email_ref, type: "email"},
-  {msg: "Password", vmode: password_ref.value, type: "password"},
-  {msg: "RePassword", vmode: rePassword_ref.value, type: "password"},
+let regist_blank = [
+  {msg: "Email", vmode: ref_email, type: "email", placeholder: "example@example.com"},
+  {msg: "Password", vmode: ref_password, type: "password", placeholder: "your password"},
+  {msg: "RePassword", vmode: ref_rePassword, type: "password", placeholder: "re your password"},
 ]
 
-const RePassword = ref("")
+const double_password = {
+  ref_password,
+  ref_rePassword,
+}
+
+watchEffect(() => {
+  let isSample = double_password.ref_password.value.trim() == double_password.ref_rePassword.value.trim()
+  if (isSample && !double_password.ref_rePassword.value == "") {
+    LogSuccess("yes")
+  }
+})
 
 const SignIn = () => {
   const userInfo = {
-    username: login_blank[0].vmode,
-    password: login_blank[1].vmode
+    username: ref_email.value,
+    password: ref_password.value
   }
   console.log(userInfo)
-  Instance.get("/login", {}).then(resp => {
-    console.log(resp.data)
-    LogSuccess("Login In Success")
-
-  }, error => {
-    console.log(error)
-    LogError("Login In Error")
-  })
+  // Instance.get("/login", {}).then(resp => {
+  //   console.log(resp.data)
+  //   LogSuccess("Login In Success")
+  // }, error => {
+  //   console.log(error)
+  //   LogError("Login In Error")
+  // })
+}
+const SignUp = () => {
+  const userInfo = {
+    username: ref_email.value.trim(),
+    password: ref_password.value.trim()
+  }
+  console.log(userInfo)
 }
 
 const changePage = () => {
   isLoginPage.value = !isLoginPage.value
+  ref_email.value = ""
+  ref_password.value = ""
+  ref_rePassword.value = ""
+
+
 }
 </script>
 

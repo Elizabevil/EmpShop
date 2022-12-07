@@ -10,10 +10,9 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template lang="pug">
-
-ul.horizon_ul.font_uppercase
+ul.vertical_ul.fontaa
   li
-    a.shieldLogo
+    a 用户a
   li(v-for="(item,index) in props.menus" )
     a {{item}}
 
@@ -22,10 +21,6 @@ ul.horizon_ul.font_uppercase
 
 
 <style scoped lang="sass">
-@import "../assets/sass/NavBar"
-@import "../assets/sass/font"
-.shieldLogo
-  background: url("src/assets/download.png")
-  background-size: 30px
+@import "../../assets/sass/NavBar"
 
 </style>

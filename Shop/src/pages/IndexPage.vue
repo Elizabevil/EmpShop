@@ -1,7 +1,9 @@
 <template lang="pug">
 div.container
-  ShopTopBar(:menus="menus")
-  SearcherBar
+  //ShopTopBar(:menus="menus")
+  //ShopSliceBar(:menus="menus")
+  ShopMenuBar
+  //SearcherBar
   div
     p a11111sdasdaasdasdasd
     p asdasdaasdasdasd
@@ -12,9 +14,12 @@ div.container
 
 
 <script setup lang="ts">
-import ShopTopBar from "../components/ShopTopBar.vue";
-import SearcherBar from "../components/SearcherBar.vue";
+import ShopMenuBar from "../components/bar/ShopMenuBar.vue";
+
+import ShopTopBar from "../components/bar/ShopTopBar.vue";
+import SearcherBar from "../components/bar/SearcherBar.vue";
 import {provide} from "vue";
+import ShopSliceBar from "../components/bar/ShopSliceBar.vue";
 
 const searchClick = (msg: string) => {
   console.log(msg)

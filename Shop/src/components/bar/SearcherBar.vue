@@ -1,7 +1,6 @@
 <script setup lang="ts">
   import {inject, ref} from "vue"
-  import {debounce} from "../utils/tools/FunHandle"
-
+  import {debounce} from "../../utils/tools/FunHandle"
   const searchValue = ref("")
   let searchClick = inject('searchValueClick')
   const searchValueClick = () => {
@@ -13,7 +12,7 @@
 div.search-box
   input.search-txt(placeholder="Search" v-model="searchValue" v-on:keyup.enter="searchValueClick")
   button.search-btn(@click="searchValueClick")
-    img.search-img(src="@/assets/search.png" )
+    img.search-img(src="@/assets/img/search.png" )
 
 </template>
 <style scoped lang="sass">

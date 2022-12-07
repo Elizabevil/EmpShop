@@ -21,7 +21,7 @@ function displayAlert(type, data, time) {
     elem.style.textAlign = "center";
     elem.style.lineHeight = "60px";
 
-    var id = setInterval(frame, 5);
+    var id = setInterval(frame, 15);
     var pos: number = 0;
 
     function frame() {
@@ -48,7 +48,7 @@ export function LogSuccess(info: string) {
 }
 
 export function LogError(info: string) {
-    displayAlert("error", info, 1500);
+    displayAlert("error", info, 1000);
 }
 
 export function LogInfo(info: string) {

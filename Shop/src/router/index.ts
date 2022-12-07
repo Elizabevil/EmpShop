@@ -23,7 +23,7 @@ const routes = [{
         isShow: true,
         noCache: true // 不会被 <keep-alive> 缓存
     },
-    component: () => import('../pages/Login.vue')
+    component: () => import('../components/bar/ShopMenuBar.vue')
 }, {
     path: "/index",
     name: "index",
@@ -32,7 +32,7 @@ const routes = [{
         isShow: true,
         noCache: true // 不会被 <keep-alive> 缓存
     },
-    component: () => import('../pages/IndexPage.vue'),
+    component: () => import('../components/content/home_body.vue'),
     children: [...indexChildren]
 }, {
     path: "/goods",
@@ -42,7 +42,7 @@ const routes = [{
         isShow: true,
         noCache: true // 不会被 <keep-alive> 缓存
     },
-    component: () => import('../components/goods/GoodDetails.vue'),
+    component: () => import('../pages/IndexPage.vue'),
     children: [...goodsChildren]
 },
 
