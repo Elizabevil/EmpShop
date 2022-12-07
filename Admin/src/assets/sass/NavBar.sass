@@ -1,0 +1,54 @@
+.vertical_ul
+  list-style-type: none
+  position: fixed
+  background-color: #333
+  font-size: 24px
+
+.vertical_ul li
+  text-align: center
+
+.vertical_ul li a
+  display: block
+  color: #cbcbcb
+  text-align: center
+
+.vertical_ul li a.active
+  background-color: #4CAF50
+
+.vertical_ul li a:hover:not(.active)
+  background-color: #706f6f
+
+.horizon_ul
+  //固定在顶部
+  top: 0
+  width: auto
+  list-style-type: none
+  margin: 0
+  padding: 0
+  overflow: hidden
+  background-color: #333
+  display: flex
+  align-items: center
+
+  .horizon_ul li
+    float: left
+
+  .horizon_ul li a
+    display: block
+    color: #c0c0c0
+    text-align: center
+    padding: 14px 16px
+    text-decoration: none
+
+  .horizon_ul li a:hover
+    background-color: #66dce3
+
+  .horizon_ul li a.active
+    background-color: #4CAF50
+
+  .horizon_ul li a.hover:not(.active)
+    background-color: #ec6f6f
+
+.store_nav_bg
+  background: linear-gradient(90deg, rgba(62, 103, 150, 0.919) 11.38%, rgba(58, 120, 177, 0.8) 25.23%, rgb(15, 33, 110) 100%)
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4)

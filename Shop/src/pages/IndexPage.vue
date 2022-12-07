@@ -4,6 +4,7 @@ div.container
   //ShopSliceBar(:menus="menus")
   ShopMenuBar
   //SearcherBar
+  .cccc
   div
     p a11111sdasdaasdasdasd
     p asdasdaasdasdasd
@@ -32,5 +33,6 @@ provide('searchValueClick', searchClick) //给自己的后代组件传递数据 
 </script>
 <style scoped lang="sass">
 @import "src/assets/sass/backgroud"
-
+.cccc
+  margin-left:  auto
 </style>

@@ -1,0 +1,86 @@
+@import "base"
+.changeToRegister
+  display: flex
+  position: absolute
+  width: 100%
+  bottom: 0
+  left: 0
+  height: 60px
+  background: #424242
+
+.login_box
+  width: 100vw
+  height: 100vh
+  display: flex
+  color: #03e9f4
+  background-clip: border-box
+  flex-direction: column
+  flex-wrap: nowrap
+  align-content: center
+  align-items: center
+  justify-content: center
+
+
+  .Login_Title
+    color: #ffffff
+    font-size: 32px
+    margin-bottom: 20px
+    margin-right: 400px
+    text-transform: uppercase
+    font-weight: 200
+
+  .Login_form
+    padding: 10px
+    position: relative
+    background: rgba(58, 58, 58, 0.5)
+    border: 1px solid #6e6e6e
+    border-radius: 5%
+    display: flex
+    flex-direction: column
+    align-items: center
+
+
+  .form_title
+    color: #7aabff
+    font-size: calc($font_size / 1.5)
+    border: 2px
+
+  ul
+    list-style: none
+
+  ul li
+    margin-top: calc($font_size / 2)
+
+    input
+      min-width: 300px
+      margin-top: calc($font_size / 5)
+      border-radius: 5px
+      padding: calc($font_size / 2)
+      box-sizing: border-box
+      font-size: calc($font_size / 1.5)
+      font-weight: 400
+      background: rgb(208, 208, 208)
+
+
+    img
+      width: 20px
+      border: #4CAF50
+
+    button:hover
+      background: rgba(117, 238, 255, 0.5)
+
+
+  &:focus
+    outline: none
+
+.remember_me
+  padding: 10px
+  text-align: left
+  display: flex
+  flex-direction: row
+  align-items: center
+  margin-right: auto
+
+  div
+    margin-left: 5px
+
