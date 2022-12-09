@@ -31,11 +31,17 @@ base_dir=$(
 #go build -a -installsuffix cgo -o Pro
 
 
-cd Shop
 
 npm install -g npm-check-updates #ncu 更新依賴
-ncu -u && npm install
 #npm install -g npm@9.1.2
+cd Shop
+
 npm i
+ncu -u && npm install
+cd ../Admin
+
+npm i
+ncu -u && npm install
+
 npm -v
 
