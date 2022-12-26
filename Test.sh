@@ -33,14 +33,11 @@ base_dir=$(
 
 
 npm install -g npm-check-updates #ncu 更新依賴
-#npm install -g npm@9.1.2
-cd Shop
 
-npm i
+cd Admin
+
 ncu -u && npm install
-cd ../Admin
-
-npm i
+cd ../Shop
 ncu -u && npm install
 
 npm -v
